@@ -27,6 +27,11 @@
 .tier-include-qty { font-size:.78rem;color:var(--text-dim);white-space:nowrap;font-style:italic; }
 .tier-price { font-family:var(--ff-display);font-size:2rem;letter-spacing:.04em;line-height:1; }
 .pkg-card:hover img { opacity: 1; transform: scale(1.03); }
+@keyframes fadeIn {
+    from { opacity:0; }
+    to   { opacity:1; }
+}
+.pkg-card:hover .zoom-hint { opacity: 1 !important; }
 .hero {
     position: relative; min-height: 100vh;
     display: flex; flex-direction: column;
@@ -573,16 +578,24 @@
 
             <div class="pkg-card" id="pkg-{{ $pkg->id }}">
                 {{-- ← GAMBAR PAKET --}}
-            @if($pkg->image_url)
-            <div style="width:100%;height:200px;overflow:hidden;position:relative;">
-                <img src="{{ $pkg->image_url }}" alt="{{ $pkg->name }}"
-                    style="width:100%;height:100%;object-fit:cover;opacity:.85;
-                            transition:opacity .3s,transform .3s;">
-                {{-- Gradient overlay bawah agar menyatu dengan card --}}
-                <div style="position:absolute;bottom:0;left:0;right:0;height:60px;
-                            background:linear-gradient(transparent, var(--bg-card));"></div>
-            </div>
-            @endif
+           @if($pkg->image_url)
+<div style="width:100%;height:200px;overflow:hidden;position:relative;cursor:pointer;"
+     onclick="openLightbox('{{ $pkg->image_url }}', '{{ $pkg->name }}')">
+    <img src="{{ $pkg->image_url }}" alt="{{ $pkg->name }}"
+         style="width:100%;height:100%;object-fit:cover;opacity:.85;
+                transition:opacity .3s,transform .3s;">
+    <div style="position:absolute;bottom:0;left:0;right:0;height:60px;
+                background:linear-gradient(transparent, var(--bg-card));"></div>
+    {{-- Zoom icon hint --}}
+    <div style="position:absolute;top:.75rem;right:.75rem;
+                background:rgba(0,0,0,0.5);
+                border:1px solid rgba(255,255,255,0.15);
+                padding:.3rem .5rem;font-size:.7rem;color:rgba(255,255,255,0.6);
+                backdrop-filter:blur(4px);">
+        🔍
+    </div>
+</div>
+@endif
                 <div class="pkg-header">
                     <div class="pkg-name">{{ $pkg->name }}</div>
                     <div class="pkg-meta">
@@ -754,6 +767,40 @@
         </div>
     </div>
 </section>
+{{-- LIGHTBOX --}}
+<div id="lightbox"
+     onclick="closeLightbox()"
+     style="display:none; position:fixed; inset:0; z-index:9999;
+            background:rgba(0,0,0,0.92); backdrop-filter:blur(8px);
+            align-items:center; justify-content:center; cursor:zoom-out;
+            animation:fadeIn .2s ease;">
+
+    <div style="position:relative; max-width:90vw; max-height:90vh;"
+         onclick="event.stopPropagation()">
+
+        {{-- Close button --}}
+        <button onclick="closeLightbox()"
+                style="position:absolute; top:-1rem; right:-1rem; z-index:1;
+                       width:36px; height:36px;
+                       background:var(--neon-pink); border:none; cursor:pointer;
+                       font-size:1rem; color:white;
+                       display:flex; align-items:center; justify-content:center;">
+            ✕
+        </button>
+
+        <img id="lightbox-img" src="" alt=""
+             style="max-width:90vw; max-height:85vh;
+                    object-fit:contain; display:block;
+                    box-shadow:0 0 60px rgba(255,45,120,0.2);
+                    border:1px solid rgba(255,255,255,0.08);">
+
+        <p id="lightbox-caption"
+           style="text-align:center; margin-top:.75rem;
+                  font-family:var(--ff-display); font-size:1.2rem;
+                  letter-spacing:.1em; color:var(--text-dim);">
+        </p>
+    </div>
+</div>
 
 @endsection
 
@@ -779,6 +826,23 @@
         priceEl.style.color = color;
     }
 }
+function openLightbox(src, caption) {
+    const lb = document.getElementById('lightbox');
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-caption').textContent = caption;
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+    document.body.style.overflow = '';
+}
+
+// Tutup dengan tombol ESC
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+});
 function switchTab(btn, tabId) {
     document.querySelectorAll('.fnb-tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.fnb-panel').forEach(p => p.classList.remove('active'));
