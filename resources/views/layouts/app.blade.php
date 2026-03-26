@@ -170,8 +170,35 @@
      style="height: 60px; width: auto;
             filter: drop-shadow(0 0 12px rgba(255,45,120,0.25));
             display: block; margin: 0 auto 3rem ;">
+        {{-- Peta Lokasi --}}
+{{-- Peta Lokasi --}}
+<div style="width:100%; max-width:700px; margin:0 auto 2rem;">
+    <p style="font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;
+              color:var(--text-muted);text-align:center;margin-bottom:.85rem;">
+        📍 Lokasi Kami
+    </p>
+    <div style="position:relative;width:100%;height:220px;
+                border:1px solid rgba(155,48,255,0.2);
+                overflow:hidden;">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d500!2d106.77264690399166!3d-6.233277326850771!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3945de9de67%3A0xa26d30fb3812e6a2!2sMasterpiece%20Family%20Karaoke%20%26%20Lounge%20Tebet!5e0!3m2!1sid!2sus!4v1774559215138!5m2!1sid!2sus"
+            width="100%" height="100%"
+            style="border:0;
+                   filter:none;
+                   display:block;"
+            allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <div style="position:absolute;inset:0;
+                    background:rgba(8,8,16,0.15);
+                    pointer-events:none;">
+        </div>
+    </div>
+   
+</div>
     <p>Jl. Prof. DR. Soepomo No.30, RT.13/RW.2, Tebet, Kota Jakarta Selatan &nbsp;·&nbsp; Buka setiap hari 13.00 – 02.00 WIB</p>
     <p style="margin-top:1.5rem;">&copy; {{ date('Y') }} Masterpiece Signature Karaoke Tebet</p>
+
 </footer>
 
 @stack('scripts')
