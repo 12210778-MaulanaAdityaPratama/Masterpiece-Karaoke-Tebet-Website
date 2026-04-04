@@ -342,14 +342,14 @@
                 <span class="left-stat-icon">🕐</span>
                 <div>
                     <span class="left-stat-label">Jam Buka</span>
-                    <span class="left-stat-val">10.00 – 02.00 WIB</span>
+                    <span class="left-stat-val">13.00 – 02.00 WIB</span>
                 </div>
             </div>
             <div class="left-stat">
                 <span class="left-stat-icon">📞</span>
                 <div>
                     <span class="left-stat-label">WhatsApp</span>
-                    <span class="left-stat-val">087770851998</span>
+                    <a class="left-stat-val" href="https://wa.me/6287770851998">087770851998</a>
                 </div>
             </div>
         </div>

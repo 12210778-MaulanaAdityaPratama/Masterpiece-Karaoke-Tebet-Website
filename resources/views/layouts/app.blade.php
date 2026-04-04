@@ -276,9 +276,13 @@
     </div>
    
 </div>
-    <p>Jl. Prof. DR. Soepomo No.30, RT.13/RW.2, Tebet, Kota Jakarta Selatan &nbsp;·&nbsp; Buka setiap hari 13.00 – 02.00 WIB</p>
-    <p style="margin-top:1.5rem;">&copy; {{ date('Y') }} Masterpiece Signature Karaoke Tebet</p>
-
+    <p>Jl. Prof. DR. Soepomo No.30, RT.13/RW.2, Tebet, Kota Jakarta Selatan &nbsp;·&nbsp; Buka setiap hari 13.00 – 03.00 WIB</p>
+    <p style="margin-top:1.5rem;">
+        &copy; {{ date('Y') }} Masterpiece Signature Karaoke Tebet <br>
+        <span style="font-size: 0.8em; color: var(--text-muted); display: inline-block; margin-top: 0.5rem;">
+            Developed by <a href="https://github.com/12210778-MaulanaAdityaPratama" target="_blank" style="color: var(--neon-pink); text-decoration: none;">servantin</a>
+        </span>
+    </p>
 </footer>
 
 <a href="https://instagram.com/masterpiece.tebet" target="_blank" class="float-ig" title="Follow Kami di Instagram">
