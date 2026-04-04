@@ -38,7 +38,7 @@ class PackageController extends Controller
         $data['sort_order'] = $request->input('sort_order', 0);
 
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('packages', 'public');
+            $data['image'] = (new \App\Services\ImageOptimizerService)->uploadAndCompress($request->file('image'), 'packages');
         }
 
         Package::create($data);
@@ -68,7 +68,7 @@ class PackageController extends Controller
 
         if ($request->hasFile('image')) {
             if ($package->image) Storage::disk('public')->delete($package->image);
-            $data['image'] = $request->file('image')->store('packages', 'public');
+            $data['image'] = (new \App\Services\ImageOptimizerService)->uploadAndCompress($request->file('image'), 'packages');
         }
 
         $package->update($data);

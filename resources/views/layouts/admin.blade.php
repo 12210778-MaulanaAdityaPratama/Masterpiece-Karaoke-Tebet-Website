@@ -110,10 +110,12 @@
 
     <div class="sidebar-section">
         <span class="sidebar-label">Kelola</span>
+        <a href="{{ route('admin.reservations.index')}}" class="{{ request()->routeIs('admin.reservations*') ? 'active' : '' }}">📅 &ensp;Reservasi</a>
         <a href="{{ route('admin.rooms.index') }}"    class="{{ request()->routeIs('admin.rooms*')    ? 'active' : '' }}">🎤 &ensp;Rooms</a>
         <a href="{{ route('admin.packages.index') }}" class="{{ request()->routeIs('admin.packages*') ? 'active' : '' }}">📦 &ensp;Paket</a>
         <a href="{{ route('admin.fnb.items') }}"      class="{{ request()->routeIs('admin.fnb.items*')? 'active' : '' }}">🍱 &ensp;Menu F&amp;B</a>
         <a href="{{ route('admin.fnb.categories') }}" class="{{ request()->routeIs('admin.fnb.cat*')  ? 'active' : '' }}">📂 &ensp;Kategori F&amp;B</a>
+        <a href="{{ route('admin.gallery.index') }}"  class="{{ request()->routeIs('admin.gallery*')  ? 'active' : '' }}">📷 &ensp;Galeri</a>
     </div>
 
     <div class="sidebar-bottom">

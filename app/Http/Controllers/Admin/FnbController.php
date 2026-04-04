@@ -72,7 +72,7 @@ class FnbController extends Controller
         $data['is_available'] = $request->has('is_available');
 
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('fnb', 'public');
+            $data['image'] = (new \App\Services\ImageOptimizerService)->uploadAndCompress($request->file('image'), 'fnb', 800);
         }
 
         FnbItem::create($data);
@@ -102,7 +102,7 @@ class FnbController extends Controller
 
         if ($request->hasFile('image')) {
             if ($fnbItem->image) Storage::disk('public')->delete($fnbItem->image);
-            $data['image'] = $request->file('image')->store('fnb', 'public');
+            $data['image'] = (new \App\Services\ImageOptimizerService)->uploadAndCompress($request->file('image'), 'fnb', 800);
         }
 
         $fnbItem->update($data);

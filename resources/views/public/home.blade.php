@@ -448,6 +448,119 @@
     .hero-info-item { flex: 1; min-width: 120px; }
     .fnb-tabs { overflow-x: auto; }
 }
+
+/* ══════════════════════════════════════════════
+   GALLERY PREVIEW
+══════════════════════════════════════════════ */
+.gal-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2.5rem;
+}
+@media(max-width:768px){ .gal-preview-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:480px){ .gal-preview-grid { grid-template-columns: 1fr; } }
+
+.gal-prev-item {
+    position: relative; border-radius: 10px; overflow: hidden;
+    aspect-ratio: 4/3;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: transform .25s, box-shadow .25s;
+}
+.gal-prev-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 20px rgba(155,48,255,0.3);
+}
+.gal-prev-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform .35s;
+}
+.gal-prev-item:hover img { transform: scale(1.06); }
+.gal-prev-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,.7) 0%, transparent 55%);
+    opacity: 0; transition: opacity .25s;
+    display: flex; align-items: flex-end; padding: .75rem;
+}
+.gal-prev-item:hover .gal-prev-overlay { opacity: 1; }
+.gal-prev-caption {
+    font-size: .72rem; color: #fff;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.gal-see-all {
+    display: inline-flex; align-items: center; gap: .5rem;
+    margin-top: 2.25rem;
+    font-size: .78rem; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--neon-purp);
+    border: 1px solid rgba(155,48,255,0.4);
+    padding: .65rem 1.75rem;
+    text-decoration: none;
+    transition: all .2s;
+}
+.gal-see-all:hover {
+    background: rgba(155,48,255,0.1);
+    box-shadow: 0 0 20px rgba(155,48,255,0.3);
+    border-color: var(--neon-purp);
+    transform: translateY(-2px);
+}
+.gal-empty-mini {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: var(--text-muted);
+    font-size: .85rem;
+    border: 1px dashed var(--border);
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+/* ══════════════════════════════════════════════
+   BOOKING FORM
+══════════════════════════════════════════════ */
+.book-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-pink);
+    border-radius: 14px;
+    padding: 3rem;
+    max-width: 800px;
+    margin: 4rem auto 0;
+    position: relative;
+    overflow: hidden;
+}
+.book-section::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--neon-pink), var(--neon-purp));
+}
+.book-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.book-full { grid-column: 1 / -1; }
+.book-group label {
+    display: block; font-size: .65rem; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--text-dim); margin-bottom: .4rem;
+}
+.book-group input, .book-group select, .book-group textarea {
+    width: 100%; background: rgba(255,255,255,.04);
+    border: 1px solid var(--border); border-radius: 8px;
+    color: var(--text); font-family: var(--ff-body); font-size: .9rem;
+    padding: .75rem 1rem; transition: border .2s; outline: none; appearance: none;
+}
+/* custom select arrow */
+.book-group select {
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%237B78A0%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat; background-position: right 1rem top 50%; background-size: .65rem auto;
+}
+.book-group input:focus, .book-group select:focus, .book-group textarea:focus { border-color: var(--neon-pink); }
+.book-group .err { font-size: .7rem; color: var(--neon-pink); margin-top: .3rem; }
+.btn-submit-book {
+    width: 100%; display: flex; align-items: center; justify-content: center; gap: .5rem;
+    background: linear-gradient(135deg, var(--neon-pink), var(--neon-purp));
+    color: #fff; border: none; border-radius: 8px;
+    padding: 1rem; font-family: var(--ff-body); font-size: .85rem; letter-spacing: .2em;
+    text-transform: uppercase; cursor: pointer; transition: transform .2s, box-shadow .2s;
+    margin-top: 1rem;
+}
+.btn-submit-book:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(255,45,120,.4); }
+@media(max-width:768px){ .book-grid { grid-template-columns: 1fr; } .book-section { padding: 2rem 1.5rem; } }
 </style>
 @endpush
 
@@ -469,7 +582,7 @@
      style="display:block; max-width: 480px; width: 85%; margin: 0 auto 1.5rem;
             filter: drop-shadow(0 0 30px rgba(255,45,120,0.3));
             animation: fadeUp 1s .1s ease both;">
-        <p class="hero-subtitle-line">KARAOKE &amp; ENTERTAINMENT</p>
+        <p class="hero-subtitle-line">KARAOKE &amp; LOUNGE</p>
         <p class="hero-desc">
             Nikmati pengalaman karaoke terbaik bersama keluarga dan sahabat.
             Room premium, audio berkualitas, dan suasana yang tak terlupakan.
@@ -724,6 +837,151 @@
 
 <div class="neon-line"></div>
 
+{{-- ══ BOOKING SECTION ══ --}}
+<section class="section" id="booking">
+    <div class="container">
+        <div style="text-align:center; margin-bottom:2rem;">
+            <span class="sec-tag">Reservasi Online</span>
+            <h2 class="sec-title">Book <span>Sekarang</span></h2>
+            <p style="margin-top:.5rem; font-size:.85rem; color:var(--text-dim);">
+                Kehabisan room? Booking dari sekarang untuk memastikan ketersediaan ruangan.
+            </p>
+        </div>
+
+        <div class="book-section">
+            <form method="POST" action="{{ route('booking.submit') }}">
+                @csrf
+                <div class="book-grid">
+                    <div class="book-group">
+                        <label>Nama Lengkap *</label>
+                        <input type="text" name="customer_name" value="{{ old('customer_name') }}" required placeholder="Masukkan nama Anda">
+                        @error('customer_name') <span class="err">{{ $message }}</span> @enderror
+                    </div>
+                    
+                    <div class="book-group">
+                        <label>Nomor WhatsApp *</label>
+                        <input type="text" name="phone_number" value="{{ old('phone_number') }}" required placeholder="08xxx...">
+                        @error('phone_number') <span class="err">{{ $message }}</span> @enderror
+                    </div>
+
+                    <div class="book-group">
+                        <label>Pilih Layanan *</label>
+                        <select name="service_choice" required>
+                            <option value="" hidden>-- Pilih Room atau Paket --</option>
+                            <optgroup label="Daftar Room">
+                                @foreach($rooms as $r)
+                                    <option value="room_{{ $r->id }}" {{ old('service_choice') == 'room_'.$r->id ? 'selected' : '' }}>
+                                        Room {{ $r->name }} ({{ $r->getCapacityLabel() }})
+                                    </option>
+                                @endforeach
+                            </optgroup>
+                            <optgroup label="Daftar Paket">
+                                @foreach($packages as $p)
+                                    <option value="package_{{ $p->id }}" {{ old('service_choice') == 'package_'.$p->id ? 'selected' : '' }}>
+                                        Paket {{ $p->name }} ({{ $p->duration_hours }} Jam)
+                                    </option>
+                                @endforeach
+                            </optgroup>
+                        </select>
+                        @error('service_choice') <span class="err">{{ $message }}</span> @enderror
+                    </div>
+
+                    <div class="book-group">
+                        <label>Durasi (Jam) *</label>
+                        <input type="number" name="duration_hours" min="1" max="12" value="{{ old('duration_hours', 2) }}" required>
+                        @error('duration_hours') <span class="err">{{ $message }}</span> @enderror
+                    </div>
+
+                    <div class="book-group">
+                        <label>Tanggal *</label>
+                        <input type="date" name="booking_date" id="booking_date" value="{{ old('booking_date') }}" required>
+                        @error('booking_date') <span class="err">{{ $message }}</span> @enderror
+                    </div>
+
+                    <div class="book-group">
+                        <label>Jam Datang *</label>
+                        <select name="booking_time" required>
+                            <option value="" hidden>Pilih Jam</option>
+                            @for($h = 13; $h <= 23; $h++)
+                                <option value="{{ sprintf('%02d:00', $h) }}" {{ old('booking_time') == sprintf('%02d:00', $h) ? 'selected' : '' }}>{{ sprintf('%02d:00', $h) }}</option>
+                                <option value="{{ sprintf('%02d:30', $h) }}" {{ old('booking_time') == sprintf('%02d:30', $h) ? 'selected' : '' }}>{{ sprintf('%02d:30', $h) }}</option>
+                            @endfor
+                            <option value="00:00" {{ old('booking_time') == '00:00' ? 'selected' : '' }}>00:00</option>
+                            <option value="00:30" {{ old('booking_time') == '00:30' ? 'selected' : '' }}>00:30</option>
+                            <option value="01:00" {{ old('booking_time') == '01:00' ? 'selected' : '' }}>01:00</option>
+                            <option value="01:30" {{ old('booking_time') == '01:30' ? 'selected' : '' }}>01:30</option>
+                            <option value="02:00" {{ old('booking_time') == '02:00' ? 'selected' : '' }}>02:00</option>
+                        </select>
+                        @error('booking_time') <span class="err">{{ $message }}</span> @enderror
+                    </div>
+
+                    <div class="book-group book-full">
+                        <label>Catatan Tambahan (Opsional)</label>
+                        <textarea name="notes" placeholder="Misal: Mohon disiapkan dekor ulang tahun...">{{ old('notes') }}</textarea>
+                        @error('notes') <span class="err">{{ $message }}</span> @enderror
+                    </div>
+
+                    <div class="book-group book-full">
+                        <button type="submit" class="btn-submit-book">
+                            Kirim ke WhatsApp 
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="margin-left:.25rem;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                        </button>
+                        <p style="font-size:.7rem; color:var(--text-muted); text-align:center; margin-top:.5rem;">
+                            Anda akan dialihkan ke WhatsApp untuk konfirmasi pesanan dengan admin kami.
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+
+<div class="neon-line"></div>
+
+{{-- ══ GALLERY PREVIEW ══ --}}
+<section class="section" id="galeri">
+    <div class="container">
+        <span class="sec-tag">✦ Momen Pelanggan</span>
+        <h2 class="sec-title">Gale<span>ri</span></h2>
+        <p style="margin-top:.75rem;font-size:.85rem;color:var(--text-dim);max-width:500px;">
+            Abadikan momentmu di Masterpiece dan bagikan kepada kami!
+        </p>
+
+        @if($galleryPreview->count())
+            <div class="gal-preview-grid">
+                @foreach($galleryPreview as $photo)
+                    <div class="gal-prev-item"
+                         onclick="openLightbox('{{ Storage::url($photo->image_path) }}', '{{ addslashes($photo->caption ?? $photo->submitter_name) }}')">
+                        <img src="{{ Storage::url($photo->image_path) }}"
+                             alt="{{ $photo->caption ?? 'Foto galeri' }}" loading="lazy">
+                        <div class="gal-prev-overlay">
+                            <span class="gal-prev-caption">
+                                {{ $photo->caption ?: $photo->submitter_name }}
+                            </span>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+            <div style="text-align:center;">
+                <a href="{{ route('gallery.index') }}" class="gal-see-all">
+                    Lihat Semua Foto &rarr;
+                </a>
+            </div>
+        @else
+            <div class="gal-empty-mini">
+                <p style="font-size:2rem;margin-bottom:.75rem;">📷</p>
+                <p>Belum ada foto — jadilah yang pertama mengirim!</p>
+                <a href="{{ route('gallery.index') }}" class="gal-see-all" style="margin-top:1.25rem;">Kirim Foto &rarr;</a>
+            </div>
+        @endif
+    </div>
+</section>
+
+<div class="neon-line"></div>
+
 {{-- ══ INFO ══ --}}
 <section class="section" id="info">
     <div class="container">
@@ -765,6 +1023,8 @@
         </div>
     </div>
 </section>
+
+
 {{-- LIGHTBOX --}}
 <div id="lightbox"
      onclick="closeLightbox()"
@@ -848,15 +1108,47 @@ function switchTab(btn, tabId) {
     document.getElementById(tabId).classList.add('active');
 }
 
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(a => {
+// Smooth scroll untuk anchor links pada navbar
+document.querySelectorAll('.nav-links a').forEach(a => {
     a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) {
+        // Ambil ID section dari href (misal: http://.../#rooms -> rooms)
+        const url = new URL(a.href);
+        if(url.hash && document.querySelector(url.hash)) {
             e.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            document.querySelector(url.hash).scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Update URL tanpa reload
+            history.pushState(null, null, url.hash);
         }
     });
+});
+
+// Scroll Spy menggunakan Intersection Observer
+document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-links a");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute("id");
+                
+                // Hapus class active dari semua
+                navLinks.forEach(link => link.classList.remove("active"));
+                
+                // Tambahkan class active ke link yang sesuai
+                navLinks.forEach(link => {
+                    if (link.getAttribute("href").includes("#" + id)) {
+                        link.classList.add("active");
+                    }
+                });
+            }
+        });
+    }, {
+        rootMargin: "-20% 0px -60% 0px", // Posisikan area deteksi di sekitar tengah atas layer
+        threshold: 0
+    });
+
+    sections.forEach(section => observer.observe(section));
 });
 </script>
 @endpush

@@ -4,12 +4,23 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\FnbController;
+use App\Http\Controllers\Admin\GalleryController as AdminGalleryController;
+use App\Http\Controllers\Admin\ReservationController as AdminReservationController;
 
 // ── Public ────────────────────────────────────────────────────────────────────
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Reservasi
+Route::post('/booking', [ReservationController::class, 'submit'])->name('booking.submit');
+
+// Galeri publik (bisa diakses siapa saja)
+Route::get('/galeri', [GalleryController::class, 'index'])->name('gallery.index');
+Route::post('/galeri/submit', [GalleryController::class, 'submit'])->name('gallery.submit');
 
 // ── Admin ─────────────────────────────────────────────────────────────────────
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin.timeout'])->group(function () {
@@ -40,6 +51,17 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin.timeout'])->g
     Route::get   ('fnb/items/{fnbItem}/edit',      [FnbController::class, 'editItem'])      ->name('fnb.items.edit');
     Route::put   ('fnb/items/{fnbItem}',           [FnbController::class, 'updateItem'])    ->name('fnb.items.update');
     Route::delete('fnb/items/{fnbItem}',           [FnbController::class, 'destroyItem'])   ->name('fnb.items.destroy');
+
+    // Gallery Admin
+    Route::get   ('gallery',                       [AdminGalleryController::class, 'index'])   ->name('gallery.index');
+    Route::patch ('gallery/{photo}/approve',       [AdminGalleryController::class, 'approve']) ->name('gallery.approve');
+    Route::patch ('gallery/{photo}/reject',        [AdminGalleryController::class, 'reject'])  ->name('gallery.reject');
+    Route::delete('gallery/{photo}',               [AdminGalleryController::class, 'destroy']) ->name('gallery.destroy');
+
+    // Reservation Admin
+    Route::get   ('reservations',                  [AdminReservationController::class, 'index'])        ->name('reservations.index');
+    Route::patch ('reservations/{reservation}/status', [AdminReservationController::class, 'updateStatus']) ->name('reservations.updateStatus');
+    Route::delete('reservations/{reservation}',    [AdminReservationController::class, 'destroy'])      ->name('reservations.destroy');
 });
 
 require __DIR__ . '/auth.php';

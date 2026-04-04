@@ -39,7 +39,7 @@ class RoomController extends Controller
         $data['facilities']   = $this->parseFacilities($request->input('facilities', ''));
 
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('rooms', 'public');
+            $data['image'] = (new \App\Services\ImageOptimizerService)->uploadAndCompress($request->file('image'), 'rooms');
         }
 
         Room::create($data);
@@ -73,7 +73,7 @@ class RoomController extends Controller
 
         if ($request->hasFile('image')) {
             if ($room->image) Storage::disk('public')->delete($room->image);
-            $data['image'] = $request->file('image')->store('rooms', 'public');
+            $data['image'] = (new \App\Services\ImageOptimizerService)->uploadAndCompress($request->file('image'), 'rooms');
         }
 
         $room->update($data);
