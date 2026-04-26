@@ -47,7 +47,7 @@
         .page-sub { font-size: 0.8rem; color: var(--text-dim); margin-top: 0.2rem; }
 
         /* Panel */
-        .panel { background: var(--bg-card); border: 1px solid var(--border); overflow: hidden; margin-bottom: 1.5rem; }
+        .panel { background: var(--bg-card); border: 1px solid var(--border); overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1.5rem; }
 
         /* Table */
         table { width: 100%; border-collapse: collapse; }

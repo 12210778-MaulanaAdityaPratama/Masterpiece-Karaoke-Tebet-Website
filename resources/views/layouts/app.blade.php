@@ -67,9 +67,8 @@
         ::-webkit-scrollbar-track { background: var(--bg-2); }
         ::-webkit-scrollbar-thumb { background: var(--neon-purp); border-radius: 3px; }
 
-        /* ── Nav ── */
         .nav {
-            position: sticky; top: 0; z-index: 100;
+            position: sticky; top: 0; z-index: 99999 !important;
             background: rgba(8,8,16,0.92);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
@@ -163,7 +162,7 @@
             }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
-                background: var(--bg-glass); backdrop-filter: blur(20px);
+                background: rgba(8, 8, 16, 0.98); backdrop-filter: none;
                 flex-direction: column; align-items: flex-start; padding: 1rem 0;
                 border-bottom: 1px solid var(--border); z-index: 99; gap: 0;
             }
@@ -226,6 +225,16 @@
         .float-ig:hover {
             transform: scale(1.1);
             color: #FFF;
+        }
+
+        @media(max-width:768px) {
+            .float-wa, .float-ig { width: 45px; height: 45px; z-index: 1 !important; }
+            .float-wa svg, .float-ig svg { width: 22px; height: 22px; }
+            .float-ig { bottom: 85px; } /* Adjust IG position slightly */
+            
+            body.nav-open .float-wa, body.nav-open .float-ig {
+                display: none !important;
+            }
         }
     </style>
     @stack('styles')
@@ -324,6 +333,7 @@
         if (navToggle && navLinks) {
             navToggle.addEventListener('click', function() {
                 navLinks.classList.toggle('active');
+                document.body.classList.toggle('nav-open');
                 this.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
             });
 
@@ -332,6 +342,7 @@
             links.forEach(link => {
                 link.addEventListener('click', () => {
                     navLinks.classList.remove('active');
+                    document.body.classList.remove('nav-open');
                     navToggle.innerHTML = '☰';
                 });
             });

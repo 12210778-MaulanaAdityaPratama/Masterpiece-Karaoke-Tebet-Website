@@ -1,16 +1,40 @@
 # 🎤 Masterpiece Signature Karaoke — Tebet
+
 ### Laravel 12 · Neon Dark Theme
+
+---
+
+## 📸 Screenshots
+
+### 🏠 Homepage Publik
+
+![Homepage Publik](public/screenshots/homepage.png)
+(public/screenshots/homepage2.png)
+(public/screenshots/homepage3.png)
+(public/screenshots/homepage4.png)
+(public/screenshots/homepage5.png)
+(public/screenshots/homepage6.png)
+(public/screenshots/homepage7.png)
+(public/screenshots/homepage8.png)
+
+### 🔑 Halaman Login
+
+![Login Page](public/screenshots/login.png)
+
+### 🔑 Halaman Dashboard Admin
+
+![Dashboard Admin Page](public/screenshots/adminpage.png)
 
 ---
 
 ## 🗂️ Struktur Fitur
 
-| Modul | Publik | Admin |
-|---|---|---|
-| **Rooms** | Price list weekday/weekend | CRUD room + kapasitas |
-| **Paket** | Kartu paket dengan isi bundling | CRUD paket + includes |
-| **F&B** | Tab per kategori + price list | CRUD item & kategori |
-| **Info** | Jam buka, lokasi, ketentuan | (static, edit di blade) |
+| Modul     | Publik                          | Admin                   |
+| --------- | ------------------------------- | ----------------------- |
+| **Rooms** | Price list weekday/weekend      | CRUD room + kapasitas   |
+| **Paket** | Kartu paket dengan isi bundling | CRUD paket + includes   |
+| **F&B**   | Tab per kategori + price list   | CRUD item & kategori    |
+| **Info**  | Jam buka, lokasi, ketentuan     | (static, edit di blade) |
 
 ---
 
@@ -67,22 +91,22 @@ php artisan serve
 
 ## 🔑 Login Admin
 
-| | |
-|---|---|
-| Email | `admin@masterpiece.com` |
-| Password | `password` |
+|          |                         |
+| -------- | ----------------------- |
+| Email    | `admin@masterpiece.com` |
+| Password | `password`              |
 
 ---
 
 ## 🌐 URL
 
-| Halaman | URL |
-|---|---|
-| Homepage publik | `http://localhost:8000` |
-| Login admin | `http://localhost:8000/login` |
-| Admin rooms | `http://localhost:8000/admin/rooms` |
-| Admin paket | `http://localhost:8000/admin/packages` |
-| Admin F&B | `http://localhost:8000/admin/fnb/items` |
+| Halaman            | URL                                          |
+| ------------------ | -------------------------------------------- |
+| Homepage publik    | `http://localhost:8000`                      |
+| Login admin        | `http://localhost:8000/login`                |
+| Admin rooms        | `http://localhost:8000/admin/rooms`          |
+| Admin paket        | `http://localhost:8000/admin/packages`       |
+| Admin F&B          | `http://localhost:8000/admin/fnb/items`      |
 | Admin kategori F&B | `http://localhost:8000/admin/fnb/categories` |
 
 ---
@@ -90,15 +114,18 @@ php artisan serve
 ## 📋 Data Seeder (Siap Pakai)
 
 **4 Room:**
+
 - Room Cozy (Small) — 2–4 orang
 - Room Classic (Medium) — 4–8 orang
 - Room Grand (Large) — 8–15 orang
 - Room VIP Sakura (VIP) — 4–10 orang
 
 **4 Paket:**
+
 - Paket Hemat, Paket Asik (Best Seller), Paket Family, Paket VIP All-In
 
 **4 Kategori F&B + 21 item:**
+
 - Minuman, Makanan Berat, Snack & Cemilan, Dessert
 
 ---

@@ -444,9 +444,13 @@
 @media(max-width: 768px){
     .rooms-grid, .pkg-grid { grid-template-columns: 1fr; }
     .info-grid { grid-template-columns: 1fr; }
-    .hero-info-strip { flex-wrap: wrap; }
-    .hero-info-item { flex: 1; min-width: 120px; }
+    .hero-info-strip { flex-direction: column; }
+    .hero-info-item { flex: none; border-right: none; border-bottom: 1px solid var(--border); padding: 0.75rem 2rem; }
+    .hero-info-item:last-child { border-bottom: none; }
     .fnb-tabs { overflow-x: auto; }
+    
+    .info-row { flex-direction: column; align-items: flex-start; gap: 0.4rem; padding: 0.8rem 0; }
+    .info-row .val { text-align: left; }
 }
 
 @media(min-width: 992px) {
@@ -801,8 +805,8 @@
                         </div>
                         <div class="pkg-price-sub">/ paket</div>
                     </div>
-                    <a href="https://wa.me/+6287770851998?text=Halo+Masterpiece,+saya+ingin+booking+{{ urlencode($pkg->name) }}"
-                       target="_blank" class="btn-book">Book &rarr;</a>
+                    <a href="#booking"
+                        class="btn-book">Book Now &rarr;</a>
                 </div>
             </div>
             @endforeach
