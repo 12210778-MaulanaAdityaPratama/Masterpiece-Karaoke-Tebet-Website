@@ -9,13 +9,13 @@
 ### 🏠 Homepage Publik
 
 ![Homepage Publik](public/screenshots/homepage.png)
-(public/screenshots/homepage2.png)
-(public/screenshots/homepage3.png)
-(public/screenshots/homepage4.png)
-(public/screenshots/homepage5.png)
-(public/screenshots/homepage6.png)
-(public/screenshots/homepage7.png)
-(public/screenshots/homepage8.png)
+![Homepage Publik](public/screenshots/homepage2.png)
+![Homepage Publik](public/screenshots/homepage3.png)
+![Homepage Publik](public/screenshots/homepage4.png)
+![Homepage Publik](public/screenshots/homepage5.png)
+![Homepage Publik](public/screenshots/homepage6.png)
+![Homepage Publik](public/screenshots/homepage7.png)
+![Homepage Publik](public/screenshots/homepage8.png)
 
 ### 🔑 Halaman Login
 
